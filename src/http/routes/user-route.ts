@@ -1,7 +1,6 @@
 import type { FastifyInstance } from 'fastify';
+import { create } from '../controllers/user-controller';
 
 export async function userRoutes(app: FastifyInstance) {
-  app.get('/test', async (req, reply) => {
-    reply.send({ message: 'test' });
-  });
+  app.post('/', create);
 }

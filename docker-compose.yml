@@ -12,5 +12,5 @@ services:
       - tracker-net
 
 networks:
-  machine-net:
+  tracker-net:
     external: true
