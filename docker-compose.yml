@@ -1,0 +1,16 @@
+services:
+  tracker-api:
+    container_name: tracker-db-postgres
+    image: postgres:16
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=tracker
+      - POSTGRES_PASSWORD=Pd5EE&UxX
+      - POSTGRES_DB=tracker
+    networks:
+      - tracker-net
+
+networks:
+  machine-net:
+    external: true
