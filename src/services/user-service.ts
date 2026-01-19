@@ -1,12 +1,15 @@
-import type { Prisma } from '../../generated/prisma/client';
 import type { UsersRepository } from '../repositories/users-repository';
+import bcrypt from 'bcryptjs';
 
+interface CreateUserProps {
+  name: string;
+  email: string;
+  password: string;
+}
 export class CreateService {
-  private usersRepository: UsersRepository;
+  constructor(private usersRepository: UsersRepository) {}
 
-  constructor(usersRepository: UsersRepository) {
-    this.usersRepository = usersRepository;
+  async create({ email, name, password }: CreateUserProps) {
+    await this.usersRepository.create({ email, name, password });
   }
-
-  async create({});
 }
