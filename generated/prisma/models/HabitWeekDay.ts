@@ -20,30 +20,20 @@ export type HabitWeekDayModel = runtime.Types.Result.DefaultSelection<Prisma.$Ha
 
 export type AggregateHabitWeekDay = {
   _count: HabitWeekDayCountAggregateOutputType | null
-  _avg: HabitWeekDayAvgAggregateOutputType | null
-  _sum: HabitWeekDaySumAggregateOutputType | null
   _min: HabitWeekDayMinAggregateOutputType | null
   _max: HabitWeekDayMaxAggregateOutputType | null
 }
 
-export type HabitWeekDayAvgAggregateOutputType = {
-  weekDay: number | null
-}
-
-export type HabitWeekDaySumAggregateOutputType = {
-  weekDay: number | null
-}
-
 export type HabitWeekDayMinAggregateOutputType = {
   id: string | null
-  weekDay: number | null
+  weekDay: $Enums.WeekDay | null
   habit_id: string | null
   createdAt: Date | null
 }
 
 export type HabitWeekDayMaxAggregateOutputType = {
   id: string | null
-  weekDay: number | null
+  weekDay: $Enums.WeekDay | null
   habit_id: string | null
   createdAt: Date | null
 }
@@ -56,14 +46,6 @@ export type HabitWeekDayCountAggregateOutputType = {
   _all: number
 }
 
-
-export type HabitWeekDayAvgAggregateInputType = {
-  weekDay?: true
-}
-
-export type HabitWeekDaySumAggregateInputType = {
-  weekDay?: true
-}
 
 export type HabitWeekDayMinAggregateInputType = {
   id?: true
@@ -125,18 +107,6 @@ export type HabitWeekDayAggregateArgs<ExtArgs extends runtime.Types.Extensions.I
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Select which fields to average
-  **/
-  _avg?: HabitWeekDayAvgAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
-   * Select which fields to sum
-  **/
-  _sum?: HabitWeekDaySumAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
    * Select which fields to find the minimum value
   **/
   _min?: HabitWeekDayMinAggregateInputType
@@ -167,20 +137,16 @@ export type HabitWeekDayGroupByArgs<ExtArgs extends runtime.Types.Extensions.Int
   take?: number
   skip?: number
   _count?: HabitWeekDayCountAggregateInputType | true
-  _avg?: HabitWeekDayAvgAggregateInputType
-  _sum?: HabitWeekDaySumAggregateInputType
   _min?: HabitWeekDayMinAggregateInputType
   _max?: HabitWeekDayMaxAggregateInputType
 }
 
 export type HabitWeekDayGroupByOutputType = {
   id: string
-  weekDay: number
+  weekDay: $Enums.WeekDay
   habit_id: string
   createdAt: Date
   _count: HabitWeekDayCountAggregateOutputType | null
-  _avg: HabitWeekDayAvgAggregateOutputType | null
-  _sum: HabitWeekDaySumAggregateOutputType | null
   _min: HabitWeekDayMinAggregateOutputType | null
   _max: HabitWeekDayMaxAggregateOutputType | null
 }
@@ -205,7 +171,7 @@ export type HabitWeekDayWhereInput = {
   OR?: Prisma.HabitWeekDayWhereInput[]
   NOT?: Prisma.HabitWeekDayWhereInput | Prisma.HabitWeekDayWhereInput[]
   id?: Prisma.StringFilter<"HabitWeekDay"> | string
-  weekDay?: Prisma.IntFilter<"HabitWeekDay"> | number
+  weekDay?: Prisma.EnumWeekDayFilter<"HabitWeekDay"> | $Enums.WeekDay
   habit_id?: Prisma.StringFilter<"HabitWeekDay"> | string
   createdAt?: Prisma.DateTimeFilter<"HabitWeekDay"> | Date | string
   habit?: Prisma.XOR<Prisma.HabitScalarRelationFilter, Prisma.HabitWhereInput>
@@ -225,7 +191,7 @@ export type HabitWeekDayWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.HabitWeekDayWhereInput | Prisma.HabitWeekDayWhereInput[]
   OR?: Prisma.HabitWeekDayWhereInput[]
   NOT?: Prisma.HabitWeekDayWhereInput | Prisma.HabitWeekDayWhereInput[]
-  weekDay?: Prisma.IntFilter<"HabitWeekDay"> | number
+  weekDay?: Prisma.EnumWeekDayFilter<"HabitWeekDay"> | $Enums.WeekDay
   habit_id?: Prisma.StringFilter<"HabitWeekDay"> | string
   createdAt?: Prisma.DateTimeFilter<"HabitWeekDay"> | Date | string
   habit?: Prisma.XOR<Prisma.HabitScalarRelationFilter, Prisma.HabitWhereInput>
@@ -237,10 +203,8 @@ export type HabitWeekDayOrderByWithAggregationInput = {
   habit_id?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.HabitWeekDayCountOrderByAggregateInput
-  _avg?: Prisma.HabitWeekDayAvgOrderByAggregateInput
   _max?: Prisma.HabitWeekDayMaxOrderByAggregateInput
   _min?: Prisma.HabitWeekDayMinOrderByAggregateInput
-  _sum?: Prisma.HabitWeekDaySumOrderByAggregateInput
 }
 
 export type HabitWeekDayScalarWhereWithAggregatesInput = {
@@ -248,55 +212,55 @@ export type HabitWeekDayScalarWhereWithAggregatesInput = {
   OR?: Prisma.HabitWeekDayScalarWhereWithAggregatesInput[]
   NOT?: Prisma.HabitWeekDayScalarWhereWithAggregatesInput | Prisma.HabitWeekDayScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"HabitWeekDay"> | string
-  weekDay?: Prisma.IntWithAggregatesFilter<"HabitWeekDay"> | number
+  weekDay?: Prisma.EnumWeekDayWithAggregatesFilter<"HabitWeekDay"> | $Enums.WeekDay
   habit_id?: Prisma.StringWithAggregatesFilter<"HabitWeekDay"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"HabitWeekDay"> | Date | string
 }
 
 export type HabitWeekDayCreateInput = {
   id?: string
-  weekDay: number
+  weekDay: $Enums.WeekDay
   createdAt?: Date | string
   habit: Prisma.HabitCreateNestedOneWithoutHabitWeekDaysInput
 }
 
 export type HabitWeekDayUncheckedCreateInput = {
   id?: string
-  weekDay: number
+  weekDay: $Enums.WeekDay
   habit_id: string
   createdAt?: Date | string
 }
 
 export type HabitWeekDayUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  weekDay?: Prisma.IntFieldUpdateOperationsInput | number
+  weekDay?: Prisma.EnumWeekDayFieldUpdateOperationsInput | $Enums.WeekDay
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   habit?: Prisma.HabitUpdateOneRequiredWithoutHabitWeekDaysNestedInput
 }
 
 export type HabitWeekDayUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  weekDay?: Prisma.IntFieldUpdateOperationsInput | number
+  weekDay?: Prisma.EnumWeekDayFieldUpdateOperationsInput | $Enums.WeekDay
   habit_id?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type HabitWeekDayCreateManyInput = {
   id?: string
-  weekDay: number
+  weekDay: $Enums.WeekDay
   habit_id: string
   createdAt?: Date | string
 }
 
 export type HabitWeekDayUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  weekDay?: Prisma.IntFieldUpdateOperationsInput | number
+  weekDay?: Prisma.EnumWeekDayFieldUpdateOperationsInput | $Enums.WeekDay
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type HabitWeekDayUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  weekDay?: Prisma.IntFieldUpdateOperationsInput | number
+  weekDay?: Prisma.EnumWeekDayFieldUpdateOperationsInput | $Enums.WeekDay
   habit_id?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -313,7 +277,7 @@ export type HabitWeekDayOrderByRelationAggregateInput = {
 
 export type HabitWeekDayHabit_idWeekDayCompoundUniqueInput = {
   habit_id: string
-  weekDay: number
+  weekDay: $Enums.WeekDay
 }
 
 export type HabitWeekDayCountOrderByAggregateInput = {
@@ -321,10 +285,6 @@ export type HabitWeekDayCountOrderByAggregateInput = {
   weekDay?: Prisma.SortOrder
   habit_id?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-}
-
-export type HabitWeekDayAvgOrderByAggregateInput = {
-  weekDay?: Prisma.SortOrder
 }
 
 export type HabitWeekDayMaxOrderByAggregateInput = {
@@ -339,10 +299,6 @@ export type HabitWeekDayMinOrderByAggregateInput = {
   weekDay?: Prisma.SortOrder
   habit_id?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-}
-
-export type HabitWeekDaySumOrderByAggregateInput = {
-  weekDay?: Prisma.SortOrder
 }
 
 export type HabitWeekDayCreateNestedManyWithoutHabitInput = {
@@ -387,23 +343,19 @@ export type HabitWeekDayUncheckedUpdateManyWithoutHabitNestedInput = {
   deleteMany?: Prisma.HabitWeekDayScalarWhereInput | Prisma.HabitWeekDayScalarWhereInput[]
 }
 
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
+export type EnumWeekDayFieldUpdateOperationsInput = {
+  set?: $Enums.WeekDay
 }
 
 export type HabitWeekDayCreateWithoutHabitInput = {
   id?: string
-  weekDay: number
+  weekDay: $Enums.WeekDay
   createdAt?: Date | string
 }
 
 export type HabitWeekDayUncheckedCreateWithoutHabitInput = {
   id?: string
-  weekDay: number
+  weekDay: $Enums.WeekDay
   createdAt?: Date | string
 }
 
@@ -438,32 +390,32 @@ export type HabitWeekDayScalarWhereInput = {
   OR?: Prisma.HabitWeekDayScalarWhereInput[]
   NOT?: Prisma.HabitWeekDayScalarWhereInput | Prisma.HabitWeekDayScalarWhereInput[]
   id?: Prisma.StringFilter<"HabitWeekDay"> | string
-  weekDay?: Prisma.IntFilter<"HabitWeekDay"> | number
+  weekDay?: Prisma.EnumWeekDayFilter<"HabitWeekDay"> | $Enums.WeekDay
   habit_id?: Prisma.StringFilter<"HabitWeekDay"> | string
   createdAt?: Prisma.DateTimeFilter<"HabitWeekDay"> | Date | string
 }
 
 export type HabitWeekDayCreateManyHabitInput = {
   id?: string
-  weekDay: number
+  weekDay: $Enums.WeekDay
   createdAt?: Date | string
 }
 
 export type HabitWeekDayUpdateWithoutHabitInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  weekDay?: Prisma.IntFieldUpdateOperationsInput | number
+  weekDay?: Prisma.EnumWeekDayFieldUpdateOperationsInput | $Enums.WeekDay
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type HabitWeekDayUncheckedUpdateWithoutHabitInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  weekDay?: Prisma.IntFieldUpdateOperationsInput | number
+  weekDay?: Prisma.EnumWeekDayFieldUpdateOperationsInput | $Enums.WeekDay
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type HabitWeekDayUncheckedUpdateManyWithoutHabitInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  weekDay?: Prisma.IntFieldUpdateOperationsInput | number
+  weekDay?: Prisma.EnumWeekDayFieldUpdateOperationsInput | $Enums.WeekDay
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -518,7 +470,7 @@ export type $HabitWeekDayPayload<ExtArgs extends runtime.Types.Extensions.Intern
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    weekDay: number
+    weekDay: $Enums.WeekDay
     habit_id: string
     createdAt: Date
   }, ExtArgs["result"]["habitWeekDay"]>
@@ -946,7 +898,7 @@ export interface Prisma__HabitWeekDayClient<T, Null = never, ExtArgs extends run
  */
 export interface HabitWeekDayFieldRefs {
   readonly id: Prisma.FieldRef<"HabitWeekDay", 'String'>
-  readonly weekDay: Prisma.FieldRef<"HabitWeekDay", 'Int'>
+  readonly weekDay: Prisma.FieldRef<"HabitWeekDay", 'WeekDay'>
   readonly habit_id: Prisma.FieldRef<"HabitWeekDay", 'String'>
   readonly createdAt: Prisma.FieldRef<"HabitWeekDay", 'DateTime'>
 }

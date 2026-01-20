@@ -9,7 +9,14 @@
 * 🟢 You can import this file directly.
 */
 
+export const WeekDay = {
+  SUNDAY: 'SUNDAY',
+  MONDAY: 'MONDAY',
+  TUESDAY: 'TUESDAY',
+  WEDNESDAY: 'WEDNESDAY',
+  THURSDAY: 'THURSDAY',
+  FRIDAY: 'FRIDAY',
+  SATURDAY: 'SATURDAY'
+} as const
 
-
-// This file is empty because there are no enums in the schema.
-export {}
+export type WeekDay = (typeof WeekDay)[keyof typeof WeekDay]

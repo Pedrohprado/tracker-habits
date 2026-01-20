@@ -13,12 +13,23 @@ datasource db {
   provider = "postgresql"
 }
 
+enum WeekDay {
+  SUNDAY
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+}
+
 model User {
   id            String   @id @default(uuid())
   name          String
   email         String   @unique
   password_hash String
   avatar_url    String?
+  first_login   Boolean  @default(true)
   habits        Habit[]
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
@@ -43,7 +54,7 @@ model Habit {
 
 model HabitWeekDay {
   id        String   @id @default(uuid())
-  weekDay   Int
+  weekDay   WeekDay
   habit_id  String
   habit     Habit    @relation(fields: [habit_id], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
