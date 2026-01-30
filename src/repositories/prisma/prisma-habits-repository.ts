@@ -1,7 +1,27 @@
 import { prisma } from '../../lib/prisma';
 import type { CreateHabitsProps } from '../../services/habit-service';
+import {
+  jsDayToEnum,
+  type JsWeekDay,
+} from '../../utils/habits-week-days-utils';
 
 export class PrismaHabitRepository {
+  async findHabitsForToday(userId: string, today: Date) {
+    return prisma.habit.findMany({
+      where: {
+        user_id: userId,
+        startDate: {
+          lte: today,
+        },
+        OR: [{ endDate: null }, { endDate: { gte: today } }],
+        habitWeekDays: {
+          some: {
+            weekDay: jsDayToEnum(today.getDay() as JsWeekDay),
+          },
+        },
+      },
+    });
+  }
   async create({ habit, userId }: CreateHabitsProps) {
     return await prisma.habit.create({
       data: {
