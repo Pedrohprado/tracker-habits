@@ -5,7 +5,7 @@ export class PrismaHabitCompletion {
     completionDate,
     habitId,
   }: {
-    completionDate: string | Date;
+    completionDate: string;
     habitId: string;
   }) {
     return await prisma.habitCompletion.create({

@@ -27,14 +27,14 @@ export type AggregateHabitCompletion = {
 export type HabitCompletionMinAggregateOutputType = {
   id: string | null
   habit_id: string | null
-  completionDate: Date | null
+  completionDate: string | null
   completedAt: Date | null
 }
 
 export type HabitCompletionMaxAggregateOutputType = {
   id: string | null
   habit_id: string | null
-  completionDate: Date | null
+  completionDate: string | null
   completedAt: Date | null
 }
 
@@ -144,7 +144,7 @@ export type HabitCompletionGroupByArgs<ExtArgs extends runtime.Types.Extensions.
 export type HabitCompletionGroupByOutputType = {
   id: string
   habit_id: string
-  completionDate: Date
+  completionDate: string
   completedAt: Date
   _count: HabitCompletionCountAggregateOutputType | null
   _min: HabitCompletionMinAggregateOutputType | null
@@ -172,7 +172,7 @@ export type HabitCompletionWhereInput = {
   NOT?: Prisma.HabitCompletionWhereInput | Prisma.HabitCompletionWhereInput[]
   id?: Prisma.StringFilter<"HabitCompletion"> | string
   habit_id?: Prisma.StringFilter<"HabitCompletion"> | string
-  completionDate?: Prisma.DateTimeFilter<"HabitCompletion"> | Date | string
+  completionDate?: Prisma.StringFilter<"HabitCompletion"> | string
   completedAt?: Prisma.DateTimeFilter<"HabitCompletion"> | Date | string
   habit?: Prisma.XOR<Prisma.HabitScalarRelationFilter, Prisma.HabitWhereInput>
 }
@@ -192,7 +192,7 @@ export type HabitCompletionWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.HabitCompletionWhereInput[]
   NOT?: Prisma.HabitCompletionWhereInput | Prisma.HabitCompletionWhereInput[]
   habit_id?: Prisma.StringFilter<"HabitCompletion"> | string
-  completionDate?: Prisma.DateTimeFilter<"HabitCompletion"> | Date | string
+  completionDate?: Prisma.StringFilter<"HabitCompletion"> | string
   completedAt?: Prisma.DateTimeFilter<"HabitCompletion"> | Date | string
   habit?: Prisma.XOR<Prisma.HabitScalarRelationFilter, Prisma.HabitWhereInput>
 }, "id" | "habit_id_completionDate">
@@ -213,13 +213,13 @@ export type HabitCompletionScalarWhereWithAggregatesInput = {
   NOT?: Prisma.HabitCompletionScalarWhereWithAggregatesInput | Prisma.HabitCompletionScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"HabitCompletion"> | string
   habit_id?: Prisma.StringWithAggregatesFilter<"HabitCompletion"> | string
-  completionDate?: Prisma.DateTimeWithAggregatesFilter<"HabitCompletion"> | Date | string
+  completionDate?: Prisma.StringWithAggregatesFilter<"HabitCompletion"> | string
   completedAt?: Prisma.DateTimeWithAggregatesFilter<"HabitCompletion"> | Date | string
 }
 
 export type HabitCompletionCreateInput = {
   id?: string
-  completionDate: Date | string
+  completionDate: string
   completedAt?: Date | string
   habit: Prisma.HabitCreateNestedOneWithoutHabitCompletionsInput
 }
@@ -227,13 +227,13 @@ export type HabitCompletionCreateInput = {
 export type HabitCompletionUncheckedCreateInput = {
   id?: string
   habit_id: string
-  completionDate: Date | string
+  completionDate: string
   completedAt?: Date | string
 }
 
 export type HabitCompletionUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  completionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completionDate?: Prisma.StringFieldUpdateOperationsInput | string
   completedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   habit?: Prisma.HabitUpdateOneRequiredWithoutHabitCompletionsNestedInput
 }
@@ -241,27 +241,27 @@ export type HabitCompletionUpdateInput = {
 export type HabitCompletionUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   habit_id?: Prisma.StringFieldUpdateOperationsInput | string
-  completionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completionDate?: Prisma.StringFieldUpdateOperationsInput | string
   completedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type HabitCompletionCreateManyInput = {
   id?: string
   habit_id: string
-  completionDate: Date | string
+  completionDate: string
   completedAt?: Date | string
 }
 
 export type HabitCompletionUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  completionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completionDate?: Prisma.StringFieldUpdateOperationsInput | string
   completedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type HabitCompletionUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   habit_id?: Prisma.StringFieldUpdateOperationsInput | string
-  completionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completionDate?: Prisma.StringFieldUpdateOperationsInput | string
   completedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -277,7 +277,7 @@ export type HabitCompletionOrderByRelationAggregateInput = {
 
 export type HabitCompletionHabit_idCompletionDateCompoundUniqueInput = {
   habit_id: string
-  completionDate: Date | string
+  completionDate: string
 }
 
 export type HabitCompletionCountOrderByAggregateInput = {
@@ -345,13 +345,13 @@ export type HabitCompletionUncheckedUpdateManyWithoutHabitNestedInput = {
 
 export type HabitCompletionCreateWithoutHabitInput = {
   id?: string
-  completionDate: Date | string
+  completionDate: string
   completedAt?: Date | string
 }
 
 export type HabitCompletionUncheckedCreateWithoutHabitInput = {
   id?: string
-  completionDate: Date | string
+  completionDate: string
   completedAt?: Date | string
 }
 
@@ -387,31 +387,31 @@ export type HabitCompletionScalarWhereInput = {
   NOT?: Prisma.HabitCompletionScalarWhereInput | Prisma.HabitCompletionScalarWhereInput[]
   id?: Prisma.StringFilter<"HabitCompletion"> | string
   habit_id?: Prisma.StringFilter<"HabitCompletion"> | string
-  completionDate?: Prisma.DateTimeFilter<"HabitCompletion"> | Date | string
+  completionDate?: Prisma.StringFilter<"HabitCompletion"> | string
   completedAt?: Prisma.DateTimeFilter<"HabitCompletion"> | Date | string
 }
 
 export type HabitCompletionCreateManyHabitInput = {
   id?: string
-  completionDate: Date | string
+  completionDate: string
   completedAt?: Date | string
 }
 
 export type HabitCompletionUpdateWithoutHabitInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  completionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completionDate?: Prisma.StringFieldUpdateOperationsInput | string
   completedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type HabitCompletionUncheckedUpdateWithoutHabitInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  completionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completionDate?: Prisma.StringFieldUpdateOperationsInput | string
   completedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type HabitCompletionUncheckedUpdateManyWithoutHabitInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  completionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completionDate?: Prisma.StringFieldUpdateOperationsInput | string
   completedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -467,7 +467,7 @@ export type $HabitCompletionPayload<ExtArgs extends runtime.Types.Extensions.Int
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     habit_id: string
-    completionDate: Date
+    completionDate: string
     completedAt: Date
   }, ExtArgs["result"]["habitCompletion"]>
   composites: {}
@@ -895,7 +895,7 @@ export interface Prisma__HabitCompletionClient<T, Null = never, ExtArgs extends 
 export interface HabitCompletionFieldRefs {
   readonly id: Prisma.FieldRef<"HabitCompletion", 'String'>
   readonly habit_id: Prisma.FieldRef<"HabitCompletion", 'String'>
-  readonly completionDate: Prisma.FieldRef<"HabitCompletion", 'DateTime'>
+  readonly completionDate: Prisma.FieldRef<"HabitCompletion", 'String'>
   readonly completedAt: Prisma.FieldRef<"HabitCompletion", 'DateTime'>
 }
     

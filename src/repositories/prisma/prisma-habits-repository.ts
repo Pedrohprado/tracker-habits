@@ -1,3 +1,4 @@
+import { endOfWeek, startOfWeek } from 'date-fns';
 import { prisma } from '../../lib/prisma';
 import type { CreateHabitsProps } from '../../services/habit-service';
 import {
@@ -20,8 +21,20 @@ export class PrismaHabitRepository {
           },
         },
       },
+      include: {
+        habitWeekDays: true,
+        habitCompletions: {
+          where: {
+            completedAt: {
+              gte: startOfWeek(today, { weekStartsOn: 0 }),
+              lte: endOfWeek(today, { weekStartsOn: 0 }),
+            },
+          },
+        },
+      },
     });
   }
+
   async create({ habit, userId }: CreateHabitsProps) {
     return await prisma.habit.create({
       data: {

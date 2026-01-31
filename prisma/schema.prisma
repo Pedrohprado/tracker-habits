@@ -67,7 +67,7 @@ model HabitCompletion {
   id             String   @id @default(uuid())
   habit_id       String
   habit          Habit    @relation(fields: [habit_id], references: [id])
-  completionDate DateTime @db.Date
+  completionDate String
   completedAt    DateTime @default(now())
 
   @@unique([habit_id, completionDate])
