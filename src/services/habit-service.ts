@@ -46,13 +46,9 @@ export class GetHabitsForToday {
 
     return habits.map((habit) => {
       const weekDaysEnabled = habit.habitWeekDays.map((w) => w.weekDay);
-      console.log(weekDaysEnabled);
       const completedDays = habit.habitCompletions.map(
         (c) => new Date(c.completionDate).getDay() + 1,
       );
-      console.log(completedDays);
-
-      console.log(today.getDay());
 
       const total = weekDaysEnabled.length;
       const completed = completedDays.length;
@@ -65,9 +61,8 @@ export class GetHabitsForToday {
           : false,
       );
 
-      // const validEnabledDay = today.getDate() >= habit.createdAt.getDate();
-      // console.log(validEnabledDay);
       const startWeek = startOfWeek(today);
+
       const week = [
         'SUNDAY',
         'MONDAY',
